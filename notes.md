@@ -127,6 +127,37 @@
             --- if the middle val === the desired value, return the index
             --- if the middle val is too small, move the start pointer up (to middle pointer + 1)
             --- if the middle val is too large, move the end pointer down (to middle pointer - 1)
-            - if you never find the desired value, return -1
+            --- if you never find the desired value, return -1
+
+## Sorting Algorithms
+    - Rearrage the items in a collection (e.g. array) so that items are in some kind of order
+        -- numbers --> smallest to largest
+        -- names --> alphabetically
+        -- movies --> based on release year
+    - Built-in JavaScript Sort (array.sort())
+        -- default (no params) sorts by unicode character #
+        -- accepts an optional comparator function (what do we want to sort by?)
+        -- comparator function looks at a pair of elements and determines their sort order based on the return value
+    - Bubble Sort
+        -- largest values will bubble to the top one at a time
+        -- compare two adjacent values and swap if the left value is larger
+        -- O(n) or O(n^2) without optimizations --> not so efficient or commonly used
+        -- pseudocode:
+            --- initialize noSwaps
+            --- start looping through the array w a variable called "i" coming from the end to the beginning. noSwaps = true
+            --- start an inner loop w a variable called "j" from the beginning until j = i - 1
+            --- if arr[j] > arr[j+1] --> swap those two vals (create a temp var... temp = arr[j], arr[j] = arr[j+1], arr[j+1] = temp) --> set noSwaps = false
+            --- if noSwaps, break (we're sorted)
+    - Selection Sort
+        -- similar to bubble sort, but instead of placing large values at the end, we put small values at the beginning
+        -- find min value and swap with index 0... 
+        -- O(n^2) --> not especially effective or commonly used
+        -- pseudocode:
+            -- store first element as min
+            -- if next item is smaller, update min and continue to end of the array
+            -- if the min value is not the same index as where you started, swap those two values
+            -- repeat with the next element in the array, until the array is sorted
+
+
     
 
