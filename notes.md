@@ -153,11 +153,19 @@
         -- find min value and swap with index 0... 
         -- O(n^2) --> not especially effective or commonly used
         -- pseudocode:
-            -- store first element as min
-            -- if next item is smaller, update min and continue to end of the array
-            -- if the min value is not the same index as where you started, swap those two values
-            -- repeat with the next element in the array, until the array is sorted
-
+            --- store first element as min
+            --- if next item is smaller, update min and continue to end of the array
+            --- if the min value is not the same index as where you started, swap those two values
+            --- repeat with the next element in the array, until the array is sorted
+    - Insertion Sort
+        -- builds up the sort by gradually creating a larger left half, which is always sorted
+        -- O(n^2) worst case... good if data is nearly sorted or if data is streaming (not all data available at start of sort)
+        -- pseudocode:
+            --- start by picking the second element in the array
+            --- compare the second element with the first element, and swap if necessary
+            --- continue to the next element
+            --- iterate through the sorted portion to place the element in the correct place
+            --- repeat until array is sorted
 
     
 

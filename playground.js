@@ -38,4 +38,21 @@ const selectionSort = (arr) => {
     return arr
 }
 
-console.log(selectionSort([34, 32, 5, 19, -2, 8]))
+// console.log(selectionSort([34, 32, 5, 19, -2, 8]))
+
+//////////////////////////////////
+
+const insertionSort = (arr) => {
+    console.log('insertion sort')
+    for (let i = 1; i < arr.length; i++) {
+        var currentVal = arr[i];
+        for (var j = i - 1; j >= 0 && arr[j] > currentVal; j--){
+            arr[j+1] = arr[j]
+        }
+        arr[j+1] = currentVal;
+        console.log(arr);
+    }
+    return arr;
+};
+
+console.log(insertionSort([34, 32, 5, 19, -2, 8]))
