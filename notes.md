@@ -184,6 +184,8 @@
         -- break up array into halves until you have arrays that are empty or have 1 element
         -- once we have smaller arrays (empty or 1 element), we use the merge method to merge those arrays with other sorted arrays until we're back to the full length
         -- once we are done, return the merged sorted array
+    - O(n) decompositions * O(log n) comparisons per decomposition
+        O(n * log n) is the best we can do for a vanilla sorting algorithms. Others that are better take advantages of quirks in data
 
 
 
