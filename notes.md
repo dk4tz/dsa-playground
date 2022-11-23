@@ -129,7 +129,7 @@
             --- if the middle val is too large, move the end pointer down (to middle pointer - 1)
             --- if you never find the desired value, return -1
 
-## Sorting Algorithms
+## Basic Sorting Algorithms
     - Rearrage the items in a collection (e.g. array) so that items are in some kind of order
         -- numbers --> smallest to largest
         -- names --> alphabetically
@@ -138,7 +138,7 @@
         -- default (no params) sorts by unicode character #
         -- accepts an optional comparator function (what do we want to sort by?)
         -- comparator function looks at a pair of elements and determines their sort order based on the return value
-    - Bubble Sort
+    - Bubble Sort - Time: O(n^2), Space: O(n)
         -- largest values will bubble to the top one at a time
         -- compare two adjacent values and swap if the left value is larger
         -- O(n) or O(n^2) without optimizations --> not so efficient or commonly used
@@ -148,7 +148,7 @@
             --- start an inner loop w a variable called "j" from the beginning until j = i - 1
             --- if arr[j] > arr[j+1] --> swap those two vals (create a temp var... temp = arr[j], arr[j] = arr[j+1], arr[j+1] = temp) --> set noSwaps = false
             --- if noSwaps, break (we're sorted)
-    - Selection Sort
+    - Selection Sort - Time: O(n^2), Space: O(n)
         -- similar to bubble sort, but instead of placing large values at the end, we put small values at the beginning
         -- find min value and swap with index 0... 
         -- O(n^2) --> not especially effective or commonly used
@@ -157,7 +157,7 @@
             --- if next item is smaller, update min and continue to end of the array
             --- if the min value is not the same index as where you started, swap those two values
             --- repeat with the next element in the array, until the array is sorted
-    - Insertion Sort
+    - Insertion Sort - Time: O(n^2), Space: O(n)
         -- builds up the sort by gradually creating a larger left half, which is always sorted
         -- O(n^2) worst case... good if data is nearly sorted or if data is streaming (not all data available at start of sort)
         -- pseudocode:
@@ -166,6 +166,26 @@
             --- continue to the next element
             --- iterate through the sorted portion to place the element in the correct place
             --- repeat until array is sorted
+    - These basic algos excel when the dataset is small
+
+## Merge Sort - Time: O(n log n), Space: O(n)
+    - Combination of splitting up, sorting, and merging
+    - Divide and conquer into smaller sub arrays
+    - Tip: Start with a helper function for merging two sorted arrays
+    - pseudocode (merge):
+        -- create an empty array
+        -- look at smallest vals (index 0) of input arrays 
+        -- while there are still values we haven't look at
+            * compare arr1[0] with arr2[0]
+            * push smaller value to result
+            * move onto next val of arr1
+            * once we finish one array, we push all the remaining values of the remaining array to the end of the result
+    - pseudocode (mergesort):
+        -- break up array into halves until you have arrays that are empty or have 1 element
+        -- once we have smaller arrays (empty or 1 element), we use the merge method to merge those arrays with other sorted arrays until we're back to the full length
+        -- once we are done, return the merged sorted array
+
+
 
     
 
