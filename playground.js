@@ -1,8 +1,9 @@
-const top = 200;
+const top = 100;
 const r1 = Array.from({length: top}, () => Math.floor(Math.random() * top));
-const r2 = Array.from({length: top / 2}, () => Math.floor(Math.random() * top));
+// const r2 = Array.from({length: top / 2}, () => Math.floor(Math.random() * top));
 
-console.log(`random arrays:\n ${r1} \n\n ${r2}\n`)
+console.log(`random array 1:\n ${r1} \n`)
+// console.log(`random array 2:\n ${r2} \n`)
 
 //////////////////////////////////
 
@@ -45,7 +46,7 @@ const insertionSort = (arr) => {
 
 s1 = [...Array(10).keys()]
 s2 = [...Array(10).keys()]
-console.log(`sorted arrays:\n ${s1} \n\n ${s2}\n`)
+// console.log(`sorted arrays:\n ${s1} \n\n ${s2}\n`)
 
 const merge = (arr1, arr2) => {
     let result = [];
@@ -58,7 +59,7 @@ const merge = (arr1, arr2) => {
     return result;
 };
 
-console.log(`sorted arrays merged:\n ${merge(s1, s2)} \n`);
+// console.log(`sorted arrays merged:\n ${merge(s1, s2)} \n`);
 
 const mergeSort = (arr) => {
     if (arr.length <= 1) return arr;
@@ -69,4 +70,34 @@ const mergeSort = (arr) => {
     return merge(sLeft, sRight); 
 };
 
-console.log(`randoms arrays merged, sorted :\n ${mergeSort(r1, r2)} \n`);
+// console.log(`randoms arrays merged, sorted :\n ${mergeSort(r1, r2)} \n`);
+
+//////////////////////////////////
+
+const swap = (arr, i, j) => {
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+const pivot = (arr, start=0, end=arr.length-1) => {
+    let pivot = arr[start];
+    let swapIdx = start;
+    
+    for (let i=start+1; i<arr.length; i++) {
+        if (pivot > arr[i]) {
+            swapIdx++;
+            swap(arr, swapIdx, i);
+        }
+    };
+
+    swap(arr, start, swapIdx)
+    console.log(arr);
+    return swapIdx;
+}
+
+const quickSort = (arr) => {
+    
+}
+
+console.log(`random array swapped:\n ${pivot(r1)} \n`);
