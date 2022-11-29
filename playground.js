@@ -50,7 +50,7 @@ s2 = [...Array(10).keys()]
 
 const merge = (arr1, arr2) => {
     let result = [];
-    while((arr1[0] || arr1[0] === 0) && (arr2[0] || arr2[0] === 0)) {
+    while((arr1[0] || arr1[0] === 0) && (arr2[0] || arr2[0] === 0)) { // *OR* cases handle for 0 as a value in the array
         // console.log('while hello');
         (arr1[0] < arr2[0]) ? result.push(arr1[0]) : result.push(arr2[0]);
         (arr1[0] < arr2[0]) ? arr1.shift() : arr2.shift();
@@ -70,7 +70,7 @@ const mergeSort = (arr) => {
     return merge(sLeft, sRight); 
 };
 
-// console.log(`randoms arrays merged, sorted :\n ${mergeSort(r1, r2)} \n`);
+console.log(`random array merge sorted :\n ${mergeSort(r1)} \n`);
 
 //////////////////////////////////
 
@@ -92,12 +92,44 @@ const pivot = (arr, start=0, end=arr.length-1) => {
     };
 
     swap(arr, start, swapIdx)
-    console.log(arr);
     return swapIdx;
 }
 
-const quickSort = (arr) => {
-    
+const quickSort = (arr, left=0, right=arr.length-1) => {
+    if (left < right) {
+        let pivotIdx = pivot(arr, left, right);
+        // left
+        quickSort(arr, left, pivotIdx - 1);
+        // right
+        quickSort(arr, pivotIdx + 1, right);
+    }
+    return arr;
 }
 
-console.log(`random array swapped:\n ${pivot(r1)} \n`);
+console.log(`random array quick sorted:\n ${quickSort(r1)} \n`);
+
+//////////////////////////////////
+let numby = 123456789;
+let posi = 2;
+const getDigit = (num, position) => {
+    // let spread = Array.from(String(num), Number);
+    // return spread[spread.length - position - 1]
+    return Math.floor(Math.abs(num) / Math.pow(10, position) % 10)
+};
+
+const digitCount = (num) => {
+    if (Math.floor(num / 10) === 0) return 1
+    return 1 + digitCount(num / 10)
+}
+
+const mostDigits = (numArray) => {
+    let most = 0;
+    for (let i = 0; i < numArray.length; i++){
+        most = Math.max(most, digitCount(numArray[i]))
+    }
+    return most;
+}
+
+// console.log(getDigit(numby, posi))
+// console.log(digitCount(numby))
+console.log(mostDigits([1, 2, 4, 555, 6, 77777, 99]));

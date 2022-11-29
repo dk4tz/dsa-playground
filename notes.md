@@ -129,7 +129,8 @@
             --- if the middle val is too large, move the end pointer down (to middle pointer - 1)
             --- if you never find the desired value, return -1
 
-## Basic Sorting Algorithms
+# Sort
+## Basic Sorting - Time: O(n^2)
     - Rearrage the items in a collection (e.g. array) so that items are in some kind of order
         -- numbers --> smallest to largest
         -- names --> alphabetically
@@ -187,17 +188,19 @@
     - O(n) decompositions * O(log n) comparisons per decomposition
         O(n * log n) is the best we can do for a vanilla sorting algorithms. Others that are better take advantages of quirks in data
 
-## Quick Sort - Time: 
+## Quick Sort - Time: O(n^2) worst case, Space: O(log n)
     - Like merge sort, it takes advantage of the fact the arrays of 0 or 1 element are already sorted
     - Work by selecting one element (called the "pivot") and finding the index where the pivot should end up in the sorted array
     - Recursively repeat for all other elements in the array
     - Run-time does depend on which pivot you choose. Ideally, you want to pick the median value 
     - pseudocode (partition/pivot):
+        - challenge:
         - given an arry, select pivot point, rearrange values so all vals to left are less and all vals to right are greater
         - inside the left and right, order doesn't matter
         - helper should do this *in-place* (not create new array)
         - when complete, return index of the pivot
         ******
+        - pivot helper: 
         - helper function accepts 3 arguments: an array, a start index (default 0), and an end index (default array.length - 1)
         - grab the pivot from the start of the array
         - store the current pivot index in a variable (this should keep track of where the pivot should end up)
@@ -206,6 +209,16 @@
             -- swap the starting element (i.e. the pivot) with the pivot index
             -- return the pivot index
         ******
-        
+        - quicksort:
+        - call pivot helper on the array
+        - when helper returns the pivot index, recursively call the pivot helper on the left subarray and the right subarray
+        - base case: subarray has less than 2 elements 
     
-
+## Radix Sort - Time: 
+    - special sorting algorithm that doesn't make comparisons
+    - only works on lists of numbers  
+    - exploits the fact that information about the size of a number is encoded in the # of digits
+        -- more digits = bigger!! 
+    - helper methods
+        -- getDigit(num, position) --> returns the digit in num at the specified position
+            --- e.g. getDigit(100294, 0) --> 4, getDigit(100294, 1) --> 9
