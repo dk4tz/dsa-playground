@@ -214,11 +214,12 @@
         - when helper returns the pivot index, recursively call the pivot helper on the left subarray and the right subarray
         - base case: subarray has less than 2 elements 
     
-## Radix Sort - Time: O(n * # of digits), Space: O(n + # of digits)
+## Radix Sort - Time: O(n * # of digits) --> ca, Space: O(n + # of digits)
     - special sorting algorithm that doesn't make comparisons
     - only works on lists of numbers  
     - exploits the fact that information about the size of a number is encoded in the # of digits
         -- more digits = bigger!! 
+    -- theoretically faster than comparison sorts, but there's debate
     - helper methods
         -- getDigit(num, position) --> returns the digit in num at the specified position
             --- e.g. getDigit(123456, 0) --> 6, getDigit(123456, 1) --> 5
