@@ -214,11 +214,24 @@
         - when helper returns the pivot index, recursively call the pivot helper on the left subarray and the right subarray
         - base case: subarray has less than 2 elements 
     
-## Radix Sort - Time: 
+## Radix Sort - Time: O(n * # of digits), Space: O(n + # of digits)
     - special sorting algorithm that doesn't make comparisons
     - only works on lists of numbers  
     - exploits the fact that information about the size of a number is encoded in the # of digits
         -- more digits = bigger!! 
     - helper methods
         -- getDigit(num, position) --> returns the digit in num at the specified position
-            --- e.g. getDigit(100294, 0) --> 4, getDigit(100294, 1) --> 9
+            --- e.g. getDigit(123456, 0) --> 6, getDigit(123456, 1) --> 5
+        -- digitCount(num) --> returns the number of digits in num
+            -- e.g. digitCount(123456) --> 6
+        -- mostDigits(numArray) --> given an array of numbers, return the # of digits of the largest num in the list
+            -- e.g. mostDigits([1, 22, 333, 4444]) --> 4
+    - radix sort pseudocode:
+        -- define a function that accepts a list of numbers
+        -- determine how many digits the largest # has
+        -- loop from i=0 to the largest # of digits
+        -- each iteration:
+            --- create buckets (empty arrays) for each digit
+            --- place each number in its bucket based on its i'th digit
+        -- replace existing array with values in the buckets, starting with 0 and going up to 9
+        -- return sorted list

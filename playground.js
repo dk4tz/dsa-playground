@@ -109,8 +109,9 @@ const quickSort = (arr, left=0, right=arr.length-1) => {
 console.log(`random array quick sorted:\n ${quickSort(r1)} \n`);
 
 //////////////////////////////////
-let numby = 123456789;
-let posi = 2;
+// let numby = 123456789;
+// let posi = 2;
+
 const getDigit = (num, position) => {
     // let spread = Array.from(String(num), Number);
     // return spread[spread.length - position - 1]
@@ -132,4 +133,21 @@ const mostDigits = (numArray) => {
 
 // console.log(getDigit(numby, posi))
 // console.log(digitCount(numby))
-console.log(mostDigits([1, 2, 4, 555, 6, 77777, 99]));
+// console.log(mostDigits([1, 2, 4, 555, 6, 77777, 99]));
+
+const radixSort = (numArray) => {
+    let most = mostDigits(numArray);
+    for (let i = 0; i < most; i++) {
+        let digitBuckets = Array.from({length: 10}, () => [])
+        for (let j = 0; j < numArray.length; j++) {
+            let digit = getDigit(numArray[j], i);
+            digitBuckets[digit].push(numArray[j]);
+        }
+        // console.log(digitBuckets)
+        numArray = [].concat(...digitBuckets);
+        // console.log(numArray)
+    }
+    return numArray;
+}
+
+console.log(radixSort(r1));
