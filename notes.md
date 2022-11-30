@@ -236,3 +236,48 @@
             --- place each number in its bucket based on its i'th digit
         -- replace existing array with values in the buckets, starting with 0 and going up to 9
         -- return sorted list
+
+## Data Structures o.O
+    - What makes something a data structure?
+        -- They are collections of values, the relationships between those values, and functions / operations that we can apply to that data
+    - Why are there so many ???
+        -- Different data structures excel at different things --> certain ones are very useful in special cases
+        -- Some are highly specialized while others (like arrays) are more general
+    - ES2015 Class Syntax
+        -- What's a class? --> a blueprint for creating objects with predefined properties and methods (*instances*)
+        -- JavaScript doesn't have *true* object-oriented programming --> takes advantage of "prototype-based inheritance"
+        -- In JavaScript, we implement data structures as classes
+        -- Syntax
+            --- The class keyword creates a constant, so you cannot redefine it!! 
+            --- The method to create a new object *must* be called constructor(){}
+
+            class Student {
+                constructor(firstName, lastName) {
+                    this.firstName = firstName;
+                    this.lastName = lastName;
+                }
+
+                fullName() {
+                    return `Your name is ${this.firstName} ${this.lastName};
+                }
+
+                static enrollStudents(...students) {
+                    // maybe add them to a database? 
+                    // maybe send an email?
+                }
+            }
+
+            -- instantiate a class instance using the "new" keyword
+
+            cool_guy = new Student("marty", "mcfly");
+
+        -- Instance methods
+            --- Provide functionality that pertains to a specific instance of a class
+                *** e.g. Array.push() or Array.slice()
+                *** e.g. Student.fullName()
+        -- Class methods
+            --- Define functionality that's relevant to classes but not necessarily individual instances
+                *** e.g. Student.enrollStudents([cool_guy, nerd, goth])
+            --- Not super common. Often used to create utility functions for an application
+            --- *static* methods are called without instantiating their class. a class instance *cannot* call a static method
+            --- 
