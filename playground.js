@@ -150,4 +150,39 @@ const radixSort = (numArray) => {
     return numArray;
 }
 
-console.log(radixSort(r1));
+// console.log(radixSort(r1));
+
+//////////////////////////////////
+
+class Node {
+    constructor(val) {
+        this.val = val;
+        this.next = null;
+    }
+}
+
+class SinglyLinkedList {
+    constructor() {
+        this.length = 0;
+        this.head = null;
+        this.tail = null;
+    };
+
+    push(val) {
+        const node = new Node(val);
+
+        if (!this.head) {
+            this.head = node;
+            this.tail = node;
+        } else {
+            this.tail.next = node; // set .next of current tail to the new node
+            this.tail = node; // set new tail to the new node
+        }
+        this.length++;
+        return this;
+    }
+}
+
+var list = new SinglyLinkedList();
+list.push('hello');
+console.log(list)

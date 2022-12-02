@@ -237,7 +237,7 @@
         -- replace existing array with values in the buckets, starting with 0 and going up to 9
         -- return sorted list
 
-## Data Structures o.O
+# Data Structures o.O
     - What makes something a data structure?
         -- They are collections of values, the relationships between those values, and functions / operations that we can apply to that data
     - Why are there so many ???
@@ -281,3 +281,13 @@
             --- Not super common. Often used to create utility functions for an application
             --- *static* methods are called without instantiating their class. a class instance *cannot* call a static method
             --- 
+
+## Singly Linked 
+    - A linked list is a data structure that contains a head, tail, and length property
+    - Consists of of *nodes* and each node has a value and a pointer to another node (or null)
+    - Like a bunch of train cars connected
+    - Lists vs. Arrays
+        -- Lists do not have indices, Arrays are indexed in order
+        -- Lists are connected via nodes with the *next* pointer
+        -- In Arrays, insertion / deletion can be expensive (need to reindex everything)
+        -- Lists do not allow random access (e.g. specific index), Arrays do allow this
