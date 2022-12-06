@@ -291,3 +291,6 @@
         -- Lists are connected via nodes with the *next* pointer
         -- In Arrays, insertion / deletion can be expensive (need to reindex everything)
         -- Lists do not allow random access (e.g. specific index), Arrays do allow this
+    - Linked lists are great for insertion and deletion
+    - Pop = remove a node from the end of a linked list
+    - Shift = remove a node from beginning of the linked list
