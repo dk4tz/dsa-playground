@@ -294,3 +294,10 @@
     - Linked lists are great for insertion and deletion
     - Pop = remove a node from the end of a linked list
     - Shift = remove a node from beginning of the linked list
+    - Unshift = add a new node to the beginning of the new list
+        -- accepts a value
+        -- creates a new node w the value
+        -- if there is no head, set the new node to be head and tail
+        -- if there is a head, set the new node's .next property to be the current head
+        -- if there is a head, update current head to new node
+    - Get = retrieve a node by its position in the linked list (0-indexed. manually counting)

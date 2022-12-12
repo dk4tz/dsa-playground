@@ -218,21 +218,49 @@ class SinglyLinkedList {
     if (!this.head) return undefined;
 
     var oldHead = this.head; // point to old head
-    this.head = this.head.next; // decapitate
+    this.head = oldHead.next; // decapitate
     this.length--; // update height
 
     if (this.length === 0) {
-        this.tail = 0;
+        this.tail = null;
     }
     return oldHead; // return old head
+  }
+
+  unshift(val) {
+    var node = new Node(val);
+
+    if (!this.head) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      node.next = this.head;
+      this.head = node;
+    }
+
+    this.length++;
+
+    return this;
+  }
+
+  get(idx) {
+    if (idx < 0 || idx >= this.length) return null
+    var pointer = 0;
+    var currentNode = this.head;
+
+    while (pointer !== idx) {
+      currentNode = currentNode.next;
+      pointer++;
+    }
+    return currentNode;
   }
 }
 
 var list = new SinglyLinkedList();
+
 list.push("gm");
 list.push("ge");
 list.push("gn");
 console.log(list);
-console.log(list.shift());
-console.log(list.shift());
-console.log(list);
+
+console.log(list.get(3));
