@@ -301,3 +301,45 @@
         -- if there is a head, set the new node's .next property to be the current head
         -- if there is a head, update current head to new node
     - Get = retrieve a node by its position in the linked list (0-indexed. manually counting)
+        -- accepts an index
+        -- if index < 0 or >= length, return null
+        -- loop through list until you reach index and find node at given index
+    - Set = given a position and a value, set the position in the linked list to that value
+        -- accepts an index and a value
+        -- you can use the "get" method to find that node
+        -- if the node isn't there, return false
+        -- if the node is there, update the value and return true
+    - Insert = adding a new node at a specific position
+        -- accepts an index and a value
+        -- if index < 0 or index > length, return false
+        -- if index === length, add new node to end of list (i.e. "push")
+        -- if index === 0, add new node to beginning of list (i.e. "unshift")
+        -- else, use the "get" method to access the node at index - 1
+        -- set the next property on node(idx-1) to equal the new node
+        -- set the next property on the new node to equal node(idx-1).next (will need a temp variable)
+        -- increment length 
+        -- return true
+    - Remove = remove a node from a specific position in the Linked List
+        -- accepts an index
+        -- if index < 0 or index >= length, return undefined
+        -- if index === length - 1 (i.e. last node), use the "pop" method
+        -- otherwise, use "get" to access the node at idx - 1
+        -- set the next property of (idx - 1) to be the next property of idx
+        -- decrement length
+        -- return value of removed node
+    - Reverse = reverse the Linked List in place
+        -- swap the head and tail
+        -- create a var called "next"
+        -- create a var called "previous"
+        -- create a var called "current" and initialize it to the "head" property
+        -- loop through the list
+        -- set "next" to be current.next
+        -- set "next" property on "current" to be "previous"
+        -- set "previous" to be the value of "current"
+        -- set "current to be the value of "next"
+    - BIG OOOOOO of Singly-Linked List
+        -- Insert -> O(n)
+        -- Remove -> O(1) (beginning) - O(n) (end)
+        -- Search -> O(n)
+        -- Access -> O(n)
+        -- Excel at insertion / deletion at beginning / end relative to arrays

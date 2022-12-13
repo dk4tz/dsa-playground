@@ -222,7 +222,7 @@ class SinglyLinkedList {
     this.length--; // update height
 
     if (this.length === 0) {
-        this.tail = null;
+      this.tail = null;
     }
     return oldHead; // return old head
   }
@@ -244,7 +244,7 @@ class SinglyLinkedList {
   }
 
   get(idx) {
-    if (idx < 0 || idx >= this.length) return null
+    if (idx < 0 || idx >= this.length) return null;
     var pointer = 0;
     var currentNode = this.head;
 
@@ -254,13 +254,90 @@ class SinglyLinkedList {
     }
     return currentNode;
   }
+
+  set(idx, val) {
+    var setNode = this.get(idx);
+    if (!setNode) return false;
+    setNode.val = val;
+    return true;
+  }
+
+  insert(idx, val) {
+    if (idx < 0 || idx > this.length) return false;
+    if (idx === this.length) return !!this.push(val); // !! coerces javascript object into a boolean
+    if (idx === 0) return !!this.unshift(val);
+
+    var newNode = new Node(val);
+    var previousNode = this.get(idx - 1);
+    var previousNext = previousNode.next;
+
+    previousNode.next = newNode;
+    newNode.next = previousNext;
+    this.length++;
+
+    return true;
+  }
+
+  remove(idx) {
+    if (idx < 0 || idx >= this.length) return undefined;
+    if (idx === this.length - 1) return this.pop();
+    if (idx === 0) return this.shift();
+
+    var previousNode = this.get(idx - 1);
+    var removedNode = previousNode.next;
+    previousNode.next = removedNode.next;
+
+    this.length--;
+
+    return removedNode;
+  }
+
+  print() {
+    var arr = [];
+    var current = this.head;
+    while (current) {
+      arr.push(current.val);
+      current = current.next;
+    }
+    console.log(arr);
+  }
+
+  reverse() {
+    if (!this.head) return this; // handle empty
+
+    var currentNode = this.head; // initialize "current" pointer on old head
+    this.head = this.tail; // swap head and tail
+    this.tail = currentNode;
+
+    var nextNode; // initialize next and previous temp vars
+    var prevNode = null; // tail's next should be 'null'
+
+    for (let i = 0; i < this.length; i++) { // loop through list
+      nextNode = currentNode.next; // move the "next" pointer up one (starting from tail)
+      currentNode.next = prevNode; // set the "current" pointer's next to the "previous" pointer
+
+      prevNode = currentNode; // move the "previous" pointer to the "current" node
+      currentNode = nextNode; // move the "current" poitner to the "next" node
+    }
+    return this;
+  }
 }
 
 var list = new SinglyLinkedList();
 
-list.push("gm");
-list.push("ge");
-list.push("gn");
+console.log("Singly Linked Listing...");
+list.push(":)");
+list.push("lol");
+list.push(":(");
+list.push("le sad");
+list.push(":/");
+list.push("ok this is the end");
 console.log(list);
 
-console.log(list.get(3));
+console.log(list.get(2));
+console.log(list.insert(2, "new 2"));
+console.log(list.get(2));
+console.log(list.remove(2));
+list.print();
+list.reverse();
+list.print();
