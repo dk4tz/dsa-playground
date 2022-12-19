@@ -29,7 +29,7 @@ const selectionSort = (arr) => {
 //////////////////////////////////
 
 const insertionSort = (arr) => {
-  console.log("insertion sort");
+  console.log('insertion sort');
   for (let i = 1; i < arr.length; i++) {
     var currentVal = arr[i];
     for (var j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
@@ -312,7 +312,8 @@ class SinglyLinkedList {
     var nextNode; // initialize next and previous temp vars
     var prevNode = null; // tail's next should be 'null'
 
-    for (let i = 0; i < this.length; i++) { // loop through list
+    for (let i = 0; i < this.length; i++) {
+      // loop through list
       nextNode = currentNode.next; // move the "next" pointer up one (starting from tail)
       currentNode.next = prevNode; // set the "current" pointer's next to the "previous" pointer
 
@@ -323,21 +324,60 @@ class SinglyLinkedList {
   }
 }
 
-var list = new SinglyLinkedList();
+// var list = new SinglyLinkedList();
 
-console.log("Singly Linked Listing...");
-list.push(":)");
-list.push("lol");
-list.push(":(");
-list.push("le sad");
-list.push(":/");
-list.push("ok this is the end");
-console.log(list);
+// console.log("Singly Linked Listing...");
+// list.push(":)");
+// list.push("lol");
+// list.push(":(");
+// list.push("le sad");
+// list.push(":/");
+// list.push("ok this is the end");
+// console.log(list);
 
-console.log(list.get(2));
-console.log(list.insert(2, "new 2"));
-console.log(list.get(2));
-console.log(list.remove(2));
-list.print();
-list.reverse();
-list.print();
+// console.log(list.get(2));
+// console.log(list.insert(2, "new 2"));
+// console.log(list.get(2));
+// console.log(list.remove(2));
+// list.print();
+// list.reverse();
+// list.print();
+
+class dNode {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+    this.prev = null;
+  }
+}
+
+class DoublyLinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  push(val) {
+    let newNode = new dNode(val);
+    if (this.length === 0) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      newNode.prev = this.tail;
+      this.tail = newNode;
+    }
+    this.length++;
+    return this;
+  }
+}
+
+var dList = new DoublyLinkedList();
+
+console.log('Doubly Linked Listing...');
+dList.push(99);
+dList.push(100);
+dList.push(101);
+
+console.log(dList);

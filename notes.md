@@ -343,3 +343,29 @@
         -- Search -> O(n)
         -- Access -> O(n)
         -- Excel at insertion / deletion at beginning / end relative to arrays
+
+## Doubly Linked List 
+    - Almost identical to singly linked lists, except every node has another pointer to the previous node
+    - It's great! Except it takes up more memory than a Singly Linked List
+    - More memory = more flexibility
+    - Pointers for .next and .prev
+    - Methods:
+        -- PUSH: add a node to the end of the doubly linked list
+            -- create new node with a val passed in
+            -- check if length is 0 --> new node becomes head & tail 
+            -- else, 
+                --- take tail and set .next to be new node
+                --- set .prev of new node to be the old tail
+                --- set tail of list to be new node
+            -- add 1 to length
+            -- return this
+        -- POP: remove a node from the end of the doubly linked list
+            -- if no head, return undefined
+            -- else, store current tail in var
+            -- if length === 1, set head and tail to be null
+            -- update the tail to be the previous node
+            -- take new tail, and set .next = null
+            -- set oldTail's .prev = null
+            -- decrement the length
+            -- return the val we removed 
+                
