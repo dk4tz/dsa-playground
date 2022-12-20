@@ -2,7 +2,7 @@ const top = 100;
 const r1 = Array.from({ length: top }, () => Math.floor(Math.random() * top));
 // const r2 = Array.from({length: top / 2}, () => Math.floor(Math.random() * top));
 
-console.log(`random array 1:\n ${r1} \n`);
+// console.log(`random array 1:\n ${r1} \n`);
 // console.log(`random array 2:\n ${r2} \n`)
 
 //////////////////////////////////
@@ -71,7 +71,7 @@ const mergeSort = (arr) => {
   return merge(sLeft, sRight);
 };
 
-console.log(`random array merge sorted :\n ${mergeSort(r1)} \n`);
+// console.log(`random array merge sorted :\n ${mergeSort(r1)} \n`);
 
 //////////////////////////////////
 
@@ -107,7 +107,7 @@ const quickSort = (arr, left = 0, right = arr.length - 1) => {
   return arr;
 };
 
-console.log(`random array quick sorted:\n ${quickSort(r1)} \n`);
+// console.log(`random array quick sorted:\n ${quickSort(r1)} \n`);
 
 //////////////////////////////////
 // let numby = 123456789;
@@ -324,9 +324,9 @@ class SinglyLinkedList {
   }
 }
 
-// var list = new SinglyLinkedList();
-
 // console.log("Singly Linked Listing...");
+
+// var list = new SinglyLinkedList();
 // list.push(":)");
 // list.push("lol");
 // list.push(":(");
@@ -371,13 +371,94 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
+
+  pop() {
+    if (!this.head) return undefined;
+    var oldTail = this.tail;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.tail = this.tail.prev;
+      this.tail.next = null;
+      oldTail.prev = null;
+    }
+    this.length--;
+    return oldTail;
+  }
+
+  shift() {
+    if (!this.head) return undefined;
+    var oldHead = this.head;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = this.head.next;
+      this.head.prev = null;
+      oldHead.next = null;
+    }
+    this.length--;
+    return oldHead;
+  }
+
+  unshift(val) {
+    var newHead = new dNode(val);
+    if (!this.head) {
+      this.head = newHead;
+      this.tail = newHead;
+    } else {
+      this.head.prev = newHead;
+      newHead.next = this.head;
+      this.head = newHead;
+    }
+    this.length++;
+    return this;
+  }
+
+  get(idx) {
+    if (idx < 0 || idx >= this.length) return null;
+    if (idx <= this.length / 2) {
+      // front-ways
+      let scout = this.head;
+      for (let i = 0; i <= this.length; i++) {
+        if (i === idx) {
+          return scout;
+        }
+        scout = scout.next;
+      }
+    } else {
+      // back-ways
+      let scout = this.tail;
+      for (let i = this.length - 1; i >= 0; i--) {
+        if (i === idx) {
+          return scout;
+        }
+        scout = scout.prev;
+      }
+    }
+  }
+
+  set(idx, val) {
+    var selectedNode = this.get(idx);
+    if (selectedNode) {
+      selectedNode.val = val;
+      return true;
+    } 
+    return false;
+  }
 }
 
-var dList = new DoublyLinkedList();
-
 console.log('Doubly Linked Listing...');
+
+var dList = new DoublyLinkedList();
 dList.push(99);
 dList.push(100);
 dList.push(101);
+dList.push('Hermione Granger');
+dList.push('Ron Weasley');
+dList.push('Harry Potter');
 
-console.log(dList);
+console.log(dList.get(0));
+dList.set(0, 'ooga booga boooooga');
+console.log(dList.get(0));

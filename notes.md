@@ -368,4 +368,37 @@
             -- set oldTail's .prev = null
             -- decrement the length
             -- return the val we removed 
+        -- SHIFT: remove a node from the beginning of a doubly linked list
+            -- if no head, return undefined
+            -- else, store current head in var (oldHead)
+            -- if length === 1, set head and tail to be null
+            -- set head to head.next
+            -- set head.prev to null
+            -- set oldHead.next to null
+            -- increment length
+            -- return node old head
+        -- UNSHIFT: add a node to the beginning of a doubly linked list
+            -- create new node with given value
+            -- if no head, make current node head and tail
+            -- set this.head.prev to new node
+            -- set new node .next to this.head
+            -- set this.head to new node
+            -- increment length
+            -- return list
+        -- GET: accessing a node in a doubly linked list by its position
+            -- if given idx is < 0 or >= this.length, return null
+            -- if idx <= this.length / 2
+                -- counter = 0
+                -- loop through list starting from beginning
+                -- return node once counter === idx
+            -- else
+                -- counter = this.length - 1
+                -- loop through the list starting from the end
+                -- return node once counter === idx
+        -- SET: replacing the value of a node in a doubly linked list
+            -- create a var that represents the result of the GET method at the given index
+            -- if GET returns a valid node, set the value of that node to be the given value
+            -- return true
+            -- else return false
+
                 
