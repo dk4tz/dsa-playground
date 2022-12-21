@@ -400,5 +400,31 @@
             -- if GET returns a valid node, set the value of that node to be the given value
             -- return true
             -- else return false
+        -- INSERT: adding a node in a doubly linked list in a specific position
+            -- if given index < 0 or > length, return false
+            -- if given index === 0, unshift
+            -- if given index === length - 1, push
+            -- use get method to retrieve index - 1 
+            -- set next / prev properties on all nodes relative to new node
+            -- increment the length
+            -- return true
+        -- REMOVE: removing a node in a doubly linked list from a specific position
+            -- if given index < 0 or > length, return false
+            -- if given index === 0, shift
+            -- if given index === length - 1, pop
+            -- use get method to retrieve index
+            -- save before and after
+            -- chop off current's connections
+            -- connect before and after
+            -- decrement length
+            -- return true 
+    - Big O
+        -- Insertion = O(1)
+        -- Removal = O(1)
+        -- Search = O(N) (technically O(N/2), but we round to O(N))
+        -- Access = O(N)
+    - Practical Uses
+        -- Browser history --> every page (node) has a .next , .prev
+        -- Better than Singly Linked List for finding data (can be done in 1/2  the time!!) *BUT* the cost is more memory for the second pointer
 
                 

@@ -444,21 +444,62 @@ class DoublyLinkedList {
     if (selectedNode) {
       selectedNode.val = val;
       return true;
-    } 
+    }
     return false;
+  }
+
+  insert(idx, val) {
+    if (idx < 0 || idx > this.length) return false;
+    if (idx === 0) return this.unshift(val);
+    if (idx === this.length) return this.push(val);
+
+    var after = this.get(idx);
+    var current = new dNode(val);
+    var before = after.prev;
+
+    current.next = after;
+    current.prev = before;
+
+    after.prev = current;
+    before.next = current;
+
+    this.length++;
+    return true;
+  }
+
+  remove(idx) {
+    if (idx < 0 || idx > this.length) return false;
+    if (idx === 0) return this.shift();
+    if (idx === this.length) return this.pop();
+
+    var current = this.get(idx);
+    var before = current.prev;
+    var after = current.next;
+
+    after.prev = before;
+    before.next = after;
+
+    current.prev = null;
+    current.next = null;
+
+    this.length--;
+    return true;
   }
 }
 
 console.log('Doubly Linked Listing...');
 
 var dList = new DoublyLinkedList();
-dList.push(99);
-dList.push(100);
-dList.push(101);
-dList.push('Hermione Granger');
-dList.push('Ron Weasley');
-dList.push('Harry Potter');
-
-console.log(dList.get(0));
-dList.set(0, 'ooga booga boooooga');
-console.log(dList.get(0));
+dList.push('Goku');
+dList.push('Vegeta');
+dList.push('Freeza');
+dList.push('Master Roshi')
+dList.push('Piccolo')
+dList.push('Boo')
+console.log('!!!!!! THE OG !!!!!')
+console.log(dList);
+console.log(dList.get(1));
+console.log('##### THE NEWCOMER #####')
+console.log(dList.remove(1));
+console.log(dList);
+console.log(dList.get(1));
