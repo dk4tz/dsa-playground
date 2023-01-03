@@ -578,7 +578,7 @@ class Queue {
       this.first = newNode;
       this.last = newNode;
     } else {
-      this.last.next = newNode
+      this.last.next = newNode;
       this.last = newNode;
     }
     return ++this.size;
@@ -588,7 +588,7 @@ class Queue {
     if (!this.first) return null;
     var removed = this.first;
     if (this.size === 1) {
-      this.last = null
+      this.last = null;
     }
     this.first = this.first.next;
     this.size--;
@@ -596,15 +596,88 @@ class Queue {
   }
 }
 
-console.log('Queueing...')
-var q = new Queue();
-q.enqueue(1);
-q.enqueue(2);
-q.enqueue(3);
-console.log(q);
+// console.log('Queueing...')
+// var q = new Queue();
+// q.enqueue(1);
+// q.enqueue(2);
+// q.enqueue(3);
+// console.log(q);
 
-console.log(q.dequeue())
-console.log(q.dequeue())
-console.log(q.dequeue())
-console.log(q.dequeue())
-console.log(q)
+// console.log(q.dequeue())
+// console.log(q.dequeue())
+// console.log(q.dequeue())
+// console.log(q.dequeue())
+// console.log(q)
+
+//////////////////////////////////
+
+class bstNode {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BST {
+  constructor() {
+    this.root = null;
+  }
+
+  insert(val) {
+    var newNode = new bstNode(val);
+    if (!this.root) {
+      this.root = newNode;
+      return this;
+    }
+    var scout = this.root;
+    while (true) {
+      if (val === scout.val) return undefined;
+      if (val < scout.val) {
+        if (scout.left === null) {
+          scout.left = newNode;
+          return this;
+        } else {
+          scout = scout.left;
+        }
+      } else if (val > scout.val) {
+        if (scout.right === null) {
+          scout.right = newNode;
+          return this;
+        } else {
+          scout = scout.right;
+        }
+      }
+    }
+  }
+
+  find(val) {
+    if (!this.root) return false;
+    var scout = this.root;
+    while (true) {
+      if (val === scout.val) return true;
+      if (val < scout.val) {
+        scout = scout.left;
+      } else {
+        scout = scout.right;
+      }
+      if (scout === null) return false;
+    }
+  }
+}
+
+console.log('BSTing...');
+var tree = new BST();
+tree.insert(10);
+tree.insert(100);
+tree.insert(101);
+tree.insert(97);
+tree.insert(5);
+tree.insert(7);
+tree.insert(1);
+// console.log(tree);
+// console.log(tree.root.right);
+// console.log(tree.root.left);
+console.log(tree.find(10))
+console.log(tree.find(5))
+console.log(tree.find(10000))

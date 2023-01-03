@@ -443,7 +443,7 @@
         -- Big O
             * Insertion - O(1)
             * Removal - O(1)
-            * Searching - O(N)
+            * Search - O(N)
             * Access - O(N)
     - QUEUES
         -- A *FIFO* (First In First Out) data structure
@@ -462,6 +462,63 @@
         -- Big O
             * Insertion - O(1)
             * Removal - O(1)
-            * Searching - O(N)
+            * Search - O(N)
             * Access - O(N)
-    
+## Trees
+    - Trees are a data structure that consists of nodes in a parent / child relationship
+    - Lists are *linear* while trees are *nonlinear*
+    - We can think of a Singly-Linked List as a special sort of tree
+    - In trees, nodes *must* point away from the root
+    - Terminology:
+        -- Root = the top node in a tree
+        -- Child = a node directly connected to another node when moving away from the Root
+        -- Parent = a node directly connected to another node when moving towards the Root
+        -- Siblings = a group of nodes with the same parent
+        -- Leaf = a node with no child nodes
+        -- Edge = the connection between one node and another
+    - Uses for Trees (super common):
+        -- HTML DOM
+        -- Network routing
+        -- Abstract syntax trees (for programming languages)
+        -- AI algorithms (e.g. min-max)
+        -- Folders on your computer
+        -- JSON
+    - Types of Trees
+        -- Tons of different types... We'll focus on Binary Trees and Binary Search Trees (BSTs)
+        -- Binary Trees = special family of trees where the nodes can have *at most* two children
+        -- Binary Search Trees = a sub-set of Binary Trees
+            * Used to store data that we can compare
+            * Special order to the data: 
+                ** All child nodes to the LEFT of the parent are SMALLER
+                ** All child nodes to the RIGHT of the parent are LARGER
+    - Why use a BST?
+        -- Its ordering allows for more efficient searching (you don't need to traverse the entire tree to find a particular value, you can compare the value to the node value and more efficiently check for the value)
+    - Inserting a Node into a BST:
+        -- Create a new Node
+        -- Starting at the root...
+            * If root doesn't exist, the new node becomes the root
+            * If root does exist, check if the value of the new node is larger or smaller than value of the root
+                ** If smaller: check to see if there's a node to the left...
+                    @ If there is, move to that node and repeat steps
+                    @ If there isn't, add that node as the "left" property
+                ** If larger: check to see if there's a node to the right...
+                    @ If there is, move to that node and repeat steps
+                    @ If there isn't, add that node as the "right" property
+            * return entire tree
+    - Finding a Node in a BST:
+        -- Starting at the root...
+            * If the root doesn't exist, return null
+            * If the root exists, check if root.val is the val we're looking for:
+                ** If it is, return true
+                ** If it's not, check if the val is smaller or larger than the val of the root
+                    @ If smaller: check to see if there's a node to the left...
+                        @@ If so, move to that node and repeat steps
+                        @@ If not, then return false (val doesn't exist in tree)
+                    @ If larger: check to see if there's a node to the right...
+                        @@ If so, move to that node and repeat steps
+                        @@ If not, return false (val doesn't exist in tree)
+    - Big O
+        -- Insert - O(log N)
+        -- Search - O(log N)
+        -- NOT GUARANTEED (if it's a one-sided tree (only rights), then its Big O is O(N), worst case)
+            
