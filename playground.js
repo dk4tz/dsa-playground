@@ -487,19 +487,124 @@ class DoublyLinkedList {
   }
 }
 
-console.log('Doubly Linked Listing...');
+// console.log('Doubly Linked Listing...');
 
-var dList = new DoublyLinkedList();
-dList.push('Goku');
-dList.push('Vegeta');
-dList.push('Freeza');
-dList.push('Master Roshi')
-dList.push('Piccolo')
-dList.push('Boo')
-console.log('!!!!!! THE OG !!!!!')
-console.log(dList);
-console.log(dList.get(1));
-console.log('##### THE NEWCOMER #####')
-console.log(dList.remove(1));
-console.log(dList);
-console.log(dList.get(1));
+// var dList = new DoublyLinkedList();
+// dList.push('Goku');
+// dList.push('Vegeta');
+// dList.push('Freeza');
+// dList.push('Master Roshi')
+// dList.push('Piccolo')
+// dList.push('Boo')
+// console.log('!!!!!! THE OG !!!!!')
+// console.log(dList);
+// console.log(dList.get(1));
+// console.log('##### THE NEWCOMER #####')
+// console.log(dList.remove(1));
+// console.log(dList);
+// console.log(dList.get(1));
+
+//////////////////////////////////
+
+// STACK
+class sNode {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
+}
+
+class Stack {
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.size = 0;
+  }
+
+  push(val) {
+    var newNode = new sNode(val);
+    if (!this.first) {
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      var temp = this.first;
+      this.first = newNode;
+      this.first.next = temp;
+    }
+    return ++this.size;
+  }
+
+  pop() {
+    if (!this.first) return null;
+    var popped = this.first;
+    if (this.size === 1) {
+      this.last = null;
+    }
+    this.first = this.first.next;
+    this.size--;
+    return popped.val;
+  }
+}
+
+// console.log('Stacking...');
+// var stack = new Stack();
+
+// stack.push(1);
+// stack.push(2);
+// stack.push(3);
+// console.log(stack.pop());
+// console.log(stack.pop());
+// console.log(stack.pop());
+// console.log(stack.pop());
+
+// QUEUE
+class qNode {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
+}
+
+class Queue {
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.size = 0;
+  }
+
+  enqueue(val) {
+    var newNode = new qNode(val);
+    if (!this.first) {
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      this.last.next = newNode
+      this.last = newNode;
+    }
+    return ++this.size;
+  }
+
+  dequeue() {
+    if (!this.first) return null;
+    var removed = this.first;
+    if (this.size === 1) {
+      this.last = null
+    }
+    this.first = this.first.next;
+    this.size--;
+    return removed.val;
+  }
+}
+
+console.log('Queueing...')
+var q = new Queue();
+q.enqueue(1);
+q.enqueue(2);
+q.enqueue(3);
+console.log(q);
+
+console.log(q.dequeue())
+console.log(q.dequeue())
+console.log(q.dequeue())
+console.log(q.dequeue())
+console.log(q)

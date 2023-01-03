@@ -427,4 +427,41 @@
         -- Browser history --> every page (node) has a .next , .prev
         -- Better than Singly Linked List for finding data (can be done in 1/2  the time!!) *BUT* the cost is more memory for the second pointer
 
-                
+## Stacks & Queues
+    - STACK
+        -- A *LIFO* (Last In First Out) data structure
+        -- Last element added to the stack will be the first element removed from the stack
+        -- Think about a stack of plates... As you pile it up, the last thing (top most thing) is what we remove first
+        -- Examples:
+            * Managing function invocations (the call STACK)
+            * Undo / redo functionality
+            * Routing (the history object) like in React/Browser
+        -- More than one way to implement a stack (array, linked list, ...)
+            * Array built-in methods (push & pop, unshift & shift) --> push & pop is better complexity
+            * Linked-List --> only needs two methods (push & pop) BUT we're adding/removing from beginning to the list because it's more efficient
+        -- Stacks are built for insertion & removal. If access or search required, a different data structure is prob better
+        -- Big O
+            * Insertion - O(1)
+            * Removal - O(1)
+            * Searching - O(N)
+            * Access - O(N)
+    - QUEUES
+        -- A *FIFO* (First In First Out) data structure
+        -- Think of waiting on line at an airport
+        -- Examples: 
+            * Joining a multi-player game from the lobby
+            * Background tasks
+            * Uploading resources
+            * Printing documents
+            * Updating a database with multiple queries 
+        -- Again you can also use an array. There's more than one way to implement
+            * Push and Shift (beginning)
+            * Unshift and Pop (end)
+            * UNLIKE STACKS, it's always going to be inefficient to use an Array for a Queue because you need to re-index every element on shift / unshift (no way around it)
+        -- Similar to stacks, it's more efficient to add to the end ("enqueue") and remove from the beginning ("dequeue")
+        -- Big O
+            * Insertion - O(1)
+            * Removal - O(1)
+            * Searching - O(N)
+            * Access - O(N)
+    
