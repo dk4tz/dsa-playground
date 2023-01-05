@@ -522,3 +522,33 @@
         -- Search - O(log N)
         -- NOT GUARANTEED (if it's a one-sided tree (only rights), then its Big O is O(N), worst case)
             
+## Tree Traversal
+    - Tree Traversal = visiting every node in a tree data structure once. There are many ways to do this
+    - The two most common ways are:
+        -- Breadth-First Search (BFS): starting at root and working *across* the tree
+        -- Depth-First Search (DFS): starting at the root and working *down* (there's also a few different ways to order how you go down... we'll see)
+    - Breadth-First Search
+        -- Visit all sibling nodes before visiting child nodes
+        -- Steps:
+            * Create a queue (this can be an array) and a variable (array) to store the values of the nodes visited
+            * Place the root node in the queue
+            * Loop as long as there's anything in the queue
+                ** Dequeue a node and push its value to the variable that's storing values of nodes visited
+                ** If there's a "left" property on the node, add it to the queue
+                ** If there's a "right" property on the node, add it to the queue
+            * Return the variable that stores the values 
+    - Depth-First Search
+        -- Visit all child nodes before siblings. There are a few different variations
+            * PreOrder: visit the node first, then look at the left side, then look at the right (parents first)
+            * PostOrder: look at the left side, look at the right side, then visit the node (leafs first)
+            * InOrder:
+        -- PreOrder Steps:
+            * Using recursion
+            * Create a var (array) to store the values of the nodes visited
+            * Store the root of the BST in a var (scout)
+            * Write a helper function which accepts a node
+                ** Push the value of the node to the var that stores the values
+                ** If the node has a left property, call the helper function with the left property on the node
+                ** If the node has a right property, call the helper function with the right property on the node
+            * Invoke the helper function with the scout
+            * Return the array of vals

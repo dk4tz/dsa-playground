@@ -664,6 +664,48 @@ class BST {
       if (scout === null) return false;
     }
   }
+
+  BFS() {
+    var data = [];
+    var queue = [];
+    var scout = this.root;
+    queue.push(scout);
+
+    while (queue.length) {
+      scout = queue.shift();
+      data.push(scout.val);
+      if (scout.left) queue.push(scout.left);
+      if (scout.right) queue.push(scout.right);
+    }
+
+    return data;
+  }
+
+  DFSPreOrder() {
+    var data = [];
+
+    function traverse(node) {
+      data.push(node.val);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    }
+
+    traverse(this.root);
+    return data;
+  }
+
+  DFSPostOrder() {
+    var data = [];
+
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      data.push(node.val);
+    }
+
+    traverse(this.root);
+    return data;
+  }
 }
 
 console.log('BSTing...');
@@ -675,9 +717,8 @@ tree.insert(97);
 tree.insert(5);
 tree.insert(7);
 tree.insert(1);
-// console.log(tree);
-// console.log(tree.root.right);
-// console.log(tree.root.left);
-console.log(tree.find(10))
-console.log(tree.find(5))
-console.log(tree.find(10000))
+
+console.log('Breadth-First Searching...');
+console.log(tree.BFS());
+console.log('Depth-First Searching (PreOrder)...');
+console.log(tree.DFSPostOrder());
