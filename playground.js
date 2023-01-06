@@ -706,6 +706,19 @@ class BST {
     traverse(this.root);
     return data;
   }
+
+  DFSInOrder() {
+    var data = [];
+
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      data.push(node.val);
+      if (node.right) traverse(node.right);
+    }
+
+    traverse(this.root);
+    return data;
+  }
 }
 
 console.log('BSTing...');
@@ -722,3 +735,5 @@ console.log('Breadth-First Searching...');
 console.log(tree.BFS());
 console.log('Depth-First Searching (PreOrder)...');
 console.log(tree.DFSPostOrder());
+console.log('Depth-First Searching (InOrder)...');
+console.log(tree.DFSInOrder());

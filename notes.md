@@ -541,7 +541,7 @@
         -- Visit all child nodes before siblings. There are a few different variations
             * PreOrder: visit the node first, then look at the left side, then look at the right (parents first)
             * PostOrder: look at the left side, look at the right side, then visit the node (leafs first)
-            * InOrder:
+            * InOrder: look at the left side, visit the node, then look at the right side
         -- PreOrder Steps:
             * Using recursion
             * Create a var (array) to store the values of the nodes visited
@@ -552,3 +552,24 @@
                 ** If the node has a right property, call the helper function with the right property on the node
             * Invoke the helper function with the scout
             * Return the array of vals
+        -- PostOrder Steps:
+            * Same as above, BUT in helper:
+                ** If the node has a left property, call the helper function with the left property on the node
+                ** If the node has a right property, call the helper function with the right property on the node
+                ** Push the value of the node to the var that stores the values
+        -- InOrder Steps:
+            * Same as above, BUT in helper: 
+                ** If the node has a left property, call the helper function with the left property on the node
+                ** Push the value of the node to the var that stores the values
+                ** If the node has a right property, call the helper function with the right property on the node
+    - When to use BFS vs. DFS?
+        -- Time complexity of both BFS and DFS are the same (we're visiting every node once)
+        -- Space complexity depends on the structure of the tree...
+            * If the tree is super wide, BFS will have a big big queue in memory
+            * If tree is super deep, DFS will have a big big call stack in memory
+        -- Use cases for DFS (Pre, Post, In):
+            * InOrder --> if you're searching a Binary Search Tree, you'll get all the node values ascending *in order* (smallest node first)
+            * PreOrder --> useful if you're trying to clone or duplicate a tree... easy to reconstruct (root first)
+
+## Binary Heaps
+    - 
