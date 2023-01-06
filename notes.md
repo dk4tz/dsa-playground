@@ -572,4 +572,21 @@
             * PreOrder --> useful if you're trying to clone or duplicate a tree... easy to reconstruct (root first)
 
 ## Binary Heaps
-    - 
+    - Similar to a Binary Search Tree (BST), but with some different rules
+        -- In a MAX Binary Heap, parent nodes are always larger than child nodes
+        -- In a MIN Binary Head, parent nodes are always smaller than child nodes
+    - No relationship between "left" and "right" and values --> no guarantees between sibling nodes
+    - Max Binary Heap Rules:
+        -- Each parent node has at most 2 child nodes
+        -- Value of parent nodes is always greater than the child nodes
+        -- Data is as compact as possible - All the children of each node are as full as they can be and left children are filled first
+    - Why are these important?
+        -- We use Binary Heaps to implement "Priority Queues," which are a very common data structure
+        -- Priority Queue = a queue, but we can assign an "importance level" to each element in the queue, and the element will move to the right place in the queue depending on its priority
+        -- Also commonly used in Graph Traversal algorithms
+    - There's an easy way to store a Binary Heap --> an array! 
+        -- For any parent node at index (n) of an array...
+            * The left child is at index 2n + 1
+            * The right child is at index 2n + 2
+        -- For any child node at index (n)...
+            * It's parent is at (n - 1) / 2 (rounding down)
